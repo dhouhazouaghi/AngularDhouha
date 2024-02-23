@@ -1,0 +1,30 @@
+<h1>List Apartments</h1>
+<div class="search-container">
+  <input type="number" [(ngModel)]="searchSurface" placeholder="Search by surface..." class="form-control">
+</div>
+
+<div *ngIf="listApartments.length>0 else alt">
+<div *ngFor="let A of listApartments">
+
+    <div class="card" style="width: 18rem;">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{A.appartNum}}</h5>
+          <p class="card-text">{{A.description}}</p>
+          <!-- <a [routerLink]="['/apartments',R.id]" class="btn btn-primary">Show apartments</a> -->
+          <button class="btn btn-primary" (click)="addToFavorites(A.id)">Like</button>
+
+        </div>
+      </div>
+
+</div>
+</div>
+<div class="action-buttons">
+  <a routerLink="/addApartment" class="btn btn-success">Add Apartment</a>
+</div>
+
+
+
+<ng-template #alt>
+  <h2>No apartments found</h2>
+</ng-template>
